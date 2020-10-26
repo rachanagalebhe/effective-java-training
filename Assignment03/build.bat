@@ -1,2 +1,2 @@
 
-javac -cp .;./lib FurnitureApp.java
+javac -cp .;./lib/rachlib.data;./rachjava/rachbasicdata FurnitureApp.java
