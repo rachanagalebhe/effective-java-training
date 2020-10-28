@@ -8,8 +8,7 @@ import org.junit.Test;
 
 import in.conceptarchitect.banking.BankAccount;
 
-public class BankAccountTests3 {
-	
+public class BankAccountTests {
 	
 	//ARRANGE
 	BankAccount account;
@@ -19,34 +18,33 @@ public class BankAccountTests3 {
 	
 	@Before   //this will be called before every test
 	public void init() {
-		System.out.println("before called");
+		
 		account=new BankAccount(name,correctPassword, balance);
 	}
 
-	
-	
-	
 	@Test
 	public void withdraw_shouldSucceedForHappyPath() {
 		
-		System.out.println("withdraw_shouldSucceedForHappyPath called");
-		
 		//ACT
-		boolean result=account.withdraw(1000, "p@ss"); //should be successful
-		
+		boolean result=account.withdraw(balance, correctPassword); //should be successful		
 		assertEquals(true, result);
 	}
 	
 	@Test
 	public void withdraw_shouldFailForWrongPassword() {
-		System.out.println("withdraw_shouldFailForWrongPassword called");
-		
 		//ACT
-		boolean result=account.withdraw(5000, "wrong-password"); //should be successful
+		boolean result=account.withdraw(balance, "wrong-password"); //should be successful
 		
 		//ASSERT
 		assertFalse(result);
 		
+	}
+	
+	@Test
+	public void withdraw_shouldFailForInsufficientBalance() {
+		boolean result=account.withdraw(balance+1, correctPassword);
+		
+		assertFalse(result);
 	}
 	
 	
