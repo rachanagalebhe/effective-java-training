@@ -82,7 +82,7 @@ public class BookController {
 		return bookService.getBookByIsbn(isbn);
 	}
 
-	@GetMapping("/bookname/{author_name}")
+	@GetMapping("/by/{author_name}")
 	public List<Book> getBooksByAuthor(@PathVariable("author_name") String author_name) {
 		return bookService.getBooksByAuthor(author_name);
 	}
